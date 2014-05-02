@@ -1,0 +1,49 @@
+﻿<Window x:Class="MainWindowPage"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+		Title="MainWindow" Height="600" Width="800">
+		<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border  Grid.Row="0" Background="LightBlue">
+            <TextBlock Text="Ribbon Here" Margin="10"></TextBlock>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" HorizontalAlignment="Stretch" Background="#FFBFBFBF" BorderBrush="#FF848484" BorderThickness="1,1,0,1" >
+                <Border Background="White"  HorizontalAlignment="Stretch" Margin="5,5,0,5" BorderBrush="#FF848484" BorderThickness="1,1,1,1">
+                  <StackPanel Orientation="Vertical" HorizontalAlignment="Left" Margin="5">
+                    <TextBlock Text="Navigation Pane"></TextBlock>
+                    <Button x:Name="btnlayout1" Content="Layout 1" Margin="5" Click="btnlayout1_Click_1" Width="80"></Button>
+                    <Button x:Name="btnlayout2"  Content="Layout 2" Margin="5" Click="btnlayout2_Click_1" Width="80"></Button>
+                </StackPanel>                  
+                </Border>
+                
+            </Border>
+           
+            
+            <GridSplitter HorizontalAlignment="Right" Margin="0,0,0,0"
+                  VerticalAlignment="Stretch" BorderBrush="#FF848484" BorderThickness="0,1,0,1"
+                  Grid.Column="1" ResizeBehavior="PreviousAndNext" ShowsPreview="True"
+                  Width="5" Background="#FFBFBFBF"/>
+
+            <Border Background="LightGoldenrodYellow" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,0,0">
+                <ContentControl Grid.Column="2" Content="{Binding CurrentLayout.LayoutControl}" Margin="0,0,0,0"></ContentControl>
+            </Border>
+            
+            
+            
+        </Grid>
+
+        </Grid>
+</Window>

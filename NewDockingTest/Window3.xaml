@@ -1,0 +1,23 @@
+﻿<Window x:Class="Window3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Window3" Height="300" Width="300">
+    <Window.Resources>
+        <DataTemplate x:Key="listboxtemplate">
+            <TextBlock Text="{Binding Name}"></TextBlock>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnStart" Content="Start" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="btnStart_Click_1"></Button>
+            <Button x:Name="btnQuery" Content="Query" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="10,0,0,0" Click="btnQuery_Click_1"></Button>
+        </StackPanel>
+        <ListBox x:Name="lb1" ItemTemplate="{StaticResource listboxtemplate}" Grid.Row="1">
+       
+        </ListBox>
+    </Grid>
+</Window>

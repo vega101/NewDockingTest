@@ -1,0 +1,5 @@
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\MiniDumpApp\bin\Debug\MiniDumpApp.dll
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\MiniDumpApp\bin\Debug\MiniDumpApp.pdb
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\MiniDumpApp\obj\Debug\MiniDumpApp.csprojResolveAssemblyReference.cache
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\MiniDumpApp\obj\Debug\MiniDumpApp.dll
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\MiniDumpApp\obj\Debug\MiniDumpApp.pdb

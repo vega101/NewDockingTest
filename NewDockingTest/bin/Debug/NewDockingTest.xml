@@ -1,0 +1,230 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+NewDockingTest
+</name>
+</assembly>
+<members>
+<member name="M:NewDockingTest.winHasItems.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.winHasItems">
+	<summary>
+winHasItems
+</summary>
+</member><member name="M:NewDockingTest.HierarchicalData.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.HierarchicalData">
+	<summary>
+HierarchicalData
+</summary>
+</member><member name="M:NewDockingTest.MainWindowPage.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.MainWindowPage">
+	<summary>
+MainWindowPage
+</summary>
+</member><member name="M:NewDockingTest.PersistenceTest.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.PersistenceTest">
+	<summary>
+PersistenceTest
+</summary>
+</member><member name="M:NewDockingTest.ucLayout1.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.ucLayout1">
+	<summary>
+ucLayout1
+</summary>
+</member><member name="M:NewDockingTest.Window1.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.Window1">
+	<summary>
+Window1
+</summary>
+</member><member name="M:NewDockingTest.winLoading.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.winLoading">
+	<summary>
+winLoading
+</summary>
+</member><member name="M:NewDockingTest.ucLayout2.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.ucLayout2">
+	<summary>
+ucLayout2
+</summary>
+</member><member name="M:NewDockingTest.Window2.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.Window2">
+	<summary>
+Window2
+</summary>
+</member><member name="M:NewDockingTest.Window3.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.Window3">
+	<summary>
+Window3
+</summary>
+</member><member name="M:NewDockingTest.NewDockingTest.Application.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="M:NewDockingTest.NewDockingTest.Application.Main">
+	<summary>
+Application Entry Point.
+</summary>
+</member><member name="T:NewDockingTest.NewDockingTest.Application">
+	<summary>
+Application
+</summary>
+</member><member name="M:NewDockingTest.MainWindow.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.MainWindow">
+	<summary>
+MainWindow
+</summary>
+</member><member name="M:NewDockingTest.ADTest.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.ADTest">
+	<summary>
+ADTest
+</summary>
+</member><member name="M:NewDockingTest.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+	<summary>
+CreateInstance
+</summary>
+</member><member name="M:NewDockingTest.XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+	<summary>
+GetPropertyValue
+</summary>
+</member><member name="M:NewDockingTest.XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+	<summary>
+SetPropertyValue
+</summary>
+</member><member name="M:NewDockingTest.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+	<summary>
+CreateDelegate
+</summary>
+</member><member name="M:NewDockingTest.XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+	<summary>
+AddEventHandler
+</summary>
+</member><member name="T:NewDockingTest.XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+	<summary>
+GeneratedInternalTypeHelper
+</summary>
+</member><member name="M:NewDockingTest.NotificationWindow.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.NotificationWindow">
+	<summary>
+NotificationWindow
+</summary>
+</member><member name="M:NewDockingTest.PivotWin.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.PivotWin">
+	<summary>
+PivotWin
+</summary>
+</member><member name="M:NewDockingTest.UpdateTest.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.UpdateTest">
+	<summary>
+UpdateTest
+</summary>
+</member><member name="M:NewDockingTest.winThreading.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.winThreading">
+	<summary>
+winThreading
+</summary>
+</member><member name="M:NewDockingTest.winColourPicker.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.winColourPicker">
+	<summary>
+winColourPicker
+</summary>
+</member><member name="M:NewDockingTest.winRadioButtons.InitializeComponent">
+	<summary>
+InitializeComponent
+</summary>
+</member><member name="T:NewDockingTest.winRadioButtons">
+	<summary>
+winRadioButtons
+</summary>
+</member><member name="P:NewDockingTest.My.MyWpfExtension.Application">
+	<summary>
+ Returns the application object for the running application
+ </summary>
+</member><member name="P:NewDockingTest.My.MyWpfExtension.Computer">
+	<summary>
+ Returns information about the host computer.
+ </summary>
+</member><member name="P:NewDockingTest.My.MyWpfExtension.User">
+	<summary>
+ Returns information for the current user.  If you wish to run the application with the current 
+ Windows user credentials, call My.User.InitializeWithWindowsUser().
+ </summary>
+</member><member name="P:NewDockingTest.My.MyWpfExtension.Log">
+	<summary>
+ Returns the application log. The listeners can be configured by the application's configuration file.
+ </summary>
+</member><member name="P:NewDockingTest.My.MyWpfExtension.Windows">
+	<summary>
+ Returns the collection of Windows defined in the project.
+ </summary>
+</member><member name="T:NewDockingTest.My.MyWpfExtension">
+	<summary>
+ Module used to define the properties that are available in the My Namespace for WPF
+ </summary>
+	<remarks></remarks>
+</member><member name="P:NewDockingTest.My.Resources.Resources.ResourceManager">
+	<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member><member name="P:NewDockingTest.My.Resources.Resources.Culture">
+	<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member><member name="T:NewDockingTest.My.Resources.Resources">
+	<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+</members>
+</doc>

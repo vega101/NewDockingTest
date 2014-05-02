@@ -1,0 +1,22 @@
+﻿<Window x:Class="winLoading"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    WindowStyle="None" WindowStartupLocation="CenterScreen"
+         ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" SizeToContent="WidthAndHeight" ResizeMode="NoResize" 
+    Title="LoadingWin" Height="140" Width="200">
+    <Grid>
+        <Border BorderThickness="2" Background="White" CornerRadius="5">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFB2B2B2" Offset="0"/>
+                    <GradientStop Color="#FFDEDEDE" Offset="0.5"/>
+                    <GradientStop Color="#FFB2B2B2" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <telerik:RadBusyIndicator telerik:StyleManager.Theme="Winodws7" IsBusy="True"></telerik:RadBusyIndicator>
+
+        </Border>
+    </Grid>
+</Window>

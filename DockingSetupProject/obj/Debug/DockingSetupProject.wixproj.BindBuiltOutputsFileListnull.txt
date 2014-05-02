@@ -1,0 +1,2 @@
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\DockingSetupProject\bin\Debug\DockingSetupProject.msi
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\DockingSetupProject\bin\Debug\DockingSetupProject.wixpdb

@@ -1,0 +1,40 @@
+﻿<Window x:Class="PivotWin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+         xmlns:pivot="http://schemas.telerik.com/2008/xaml/presentation/pivot"
+       xmlns:src="clr-namespace:NewDockingTest"
+    Title="PivotWin" Height="300" Width="300">
+    <Window.Resources>
+        <pivot:LocalDataSourceProvider x:Key="LocalDataProvider" AggregatesPosition="Rows">
+            <pivot:LocalDataSourceProvider.RowGroupDescriptions>
+                <pivot:PropertyGroupDescription PropertyName="Name" CustomName="My Name 1" />
+            </pivot:LocalDataSourceProvider.RowGroupDescriptions>
+            <pivot:LocalDataSourceProvider.ColumnGroupDescriptions>
+                <pivot:DateTimeGroupDescription PropertyName="Date" Step="Month" />
+            </pivot:LocalDataSourceProvider.ColumnGroupDescriptions>
+            <pivot:LocalDataSourceProvider.AggregateDescriptions>
+                <pivot:PropertyAggregateDescription PropertyName="Price" CustomName="My Price 1"  StringFormat="C" AggregateFunction="Average" />
+                <pivot:PropertyAggregateDescription PropertyName="Quantity" CustomName="My Quantity 1" />
+            </pivot:LocalDataSourceProvider.AggregateDescriptions>
+        </pivot:LocalDataSourceProvider>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <pivot:RadPivotGrid Name="radPivotGrid1" DataProvider="{StaticResource LocalDataProvider}" >
+        </pivot:RadPivotGrid>
+
+        <src:MyPivotFilterList  Grid.Column="1"  DataProvider="{StaticResource LocalDataProvider}"  />
+        
+        
+        
+    </Grid>
+</Window>

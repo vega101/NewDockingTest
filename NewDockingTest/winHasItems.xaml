@@ -1,0 +1,30 @@
+﻿<Window x:Class="winHasItems"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    Title="winHasItems" Height="300" Width="300">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVis"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="btnAdd_Click_1"></Button>
+            <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="btnRemove_Click_1"></Button>
+        </StackPanel>
+        <TextBlock Visibility="{Binding ElementName=radGridView, Path=HasItems, Converter={StaticResource boolToVis}}" Grid.Row="1">Grid Has Items</TextBlock>
+        
+        <telerik:RadGridView x:Name="radGridView" AutoGenerateColumns="False" Grid.Row="2">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" Header="Name"/>
+
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        
+    </Grid>
+</Window>

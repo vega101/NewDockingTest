@@ -1,0 +1,31 @@
+﻿<Window x:Class="winColourPicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    Title="winColourPicker" Height="300" Width="300">
+    <Window.Resources>
+        <telerik:ColorToBrushConverter x:Key="colorToBrushConverter" />
+    </Window.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnStoreColour" Width="80" Click="btnStoreColour_Click_1">Store Colour</Button>
+                <Button x:Name="btnClearColour" Width="80" Click="btnClearColour_Click_1" Margin="5,0,0,0">Clear Colour</Button>
+                <Button x:Name="btnLoadColour" Width="80" Click="btnLoadColour_Click_1" Margin="5,0,0,0">Load Colour</Button>
+            </StackPanel>
+            
+            
+            <telerik:RadColorPicker x:Name="colourPicker" NoColorVisibility="Collapsed">
+                <telerik:RadColorPicker.ContentTemplate>
+                    <DataTemplate>
+                        <Rectangle Height="16" Width="16" Fill="{Binding SelectedColor, ElementName=colourPicker, Converter={StaticResource colorToBrushConverter}}" />
+                    </DataTemplate>
+                </telerik:RadColorPicker.ContentTemplate>
+                <telerik:RadColorPicker.AdditionalContent>
+                    <telerik:RadButton Content="clear"></telerik:RadButton>
+                </telerik:RadColorPicker.AdditionalContent>
+            </telerik:RadColorPicker>
+        </StackPanel>
+
+    </Grid>
+</Window>

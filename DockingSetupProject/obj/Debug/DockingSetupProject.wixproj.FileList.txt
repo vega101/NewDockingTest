@@ -1,0 +1,6 @@
+obj\Debug\Product.wixobj
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\DockingSetupProject\bin\Debug\DockingSetupProject.msi
+C:\Users\raymondturp\Documents\Visual Studio 2012\Projects\NewDockingTest\DockingSetupProject\bin\Debug\DockingSetupProject.wixpdb
+obj\Debug\DockingSetupProject.wixproj.BindContentsFileListnull.txt
+obj\Debug\DockingSetupProject.wixproj.BindOutputsFileListnull.txt
+obj\Debug\DockingSetupProject.wixproj.BindBuiltOutputsFileListnull.txt

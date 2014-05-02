@@ -1,0 +1,562 @@
+﻿<Window x:Class="Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:telerikDocking="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Docking"
+        xmlns:Telerik_Windows_Controls_Chromes="clr-namespace:Telerik.Windows.Controls.Chromes;assembly=Telerik.Windows.Controls"
+	xmlns:Telerik_Windows_Controls_Primitives="clr-namespace:Telerik.Windows.Controls.Primitives;assembly=Telerik.Windows.Controls.Navigation"
+    Title="Window1" Height="300" Width="300">
+    <Window.Resources>
+
+        <ControlTemplate x:Key="paneheader" TargetType="{x:Type telerik:PaneHeader}">
+            <Border x:Name="Root" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1,1,0,0">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommandsMenuStates">
+                        <VisualState x:Name="CommandsMenuNormalState"/>
+                        <VisualState x:Name="CommandsMenuHiddenState">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="HeaderDropDownMenu">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Collapsed</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="PinnedStates">
+                        <VisualState x:Name="Unpinned">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="HeaderUnPinButton">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Visible</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" Storyboard.TargetName="HeaderPinButton">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Collapsed</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState x:Name="Pinned"/>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="HighlightStates">
+                        <VisualState x:Name="NotHighlighted"/>
+                        <VisualState x:Name="Highlighted">
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="Content">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <LinearGradientBrush EndPoint="0,1">
+                                                <GradientStop Color="#FFABABAB" Offset="0"/>
+                                                <GradientStop Color="#FFF2F2F2" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Grid x:Name="Content">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentControl x:Name="TitleElement" ContentTemplate="{Binding SelectedPane.TitleTemplate, RelativeSource={RelativeSource TemplatedParent}}" Content="{Binding SelectedPane.Title, RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" HorizontalContentAlignment="Stretch" Margin="{TemplateBinding Padding}" VerticalAlignment="Center" VerticalContentAlignment="Center"/>
+                    <telerik:RadToggleButton x:Name="HeaderDropDownMenu" Grid.Column="1" CommandParameter="{Binding SelectedPane, RelativeSource={RelativeSource TemplatedParent}}" Command="telerik:RadDockingCommands.ContextMenuOpen" IsThreeState="True" InnerCornerRadius="0">
+                        <telerik:RadToggleButton.Style>
+                            <Style TargetType="{x:Type telerik:RadToggleButton}">
+                                <Setter Property="Width" Value="17"/>
+                                <Setter Property="Height" Value="17"/>
+                                <Setter Property="Margin" Value="0,2,2,1"/>
+                                <Setter Property="IsTabStop" Value="False"/>
+                                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type telerik:RadToggleButton}">
+                                            <Grid>
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ForegroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="#FF8D8D8D"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="White"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Normal"/>
+                                                        <VisualState x:Name="MouseOver">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ForegroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="Black"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="White"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ForegroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="Black"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="White"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Telerik_Windows_Controls_Chromes:ButtonChrome x:Name="ButtonChrome" RenderNormal="False" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" RenderChecked="{TemplateBinding IsChecked}">
+                                                    <telerik:StyleManager.Theme>
+                                                        <telerik:Office_BlackTheme/>
+                                                    </telerik:StyleManager.Theme>
+                                                </Telerik_Windows_Controls_Chromes:ButtonChrome>
+                                                <Path x:Name="BackgroundIcon" Data="M0,0L7,0 7,1 6,1 6,2 5,2 5,3 4,3 4,4 3,4 3,3 2,3 2,2 1,2 1,1 0,1z" Fill="White" Height="4" Margin="0,2,0,0" Width="7"/>
+                                                <Path x:Name="ForegroundIcon" Data="M0,0L7,0 7,1 6,1 6,2 5,2 5,3 4,3 4,4 3,4 3,3 2,3 2,2 1,2 1,1 0,1z" Fill="Black" Height="4" Margin="0,1" Width="7"/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </telerik:RadToggleButton.Style>
+                    </telerik:RadToggleButton>
+                    <Grid Grid.Column="2" Visibility="{Binding SelectedPane.PinButtonVisibility, RelativeSource={RelativeSource TemplatedParent}}">
+                        <telerik:RadButton x:Name="HeaderPinButton" CommandParameter="{Binding SelectedPane, RelativeSource={RelativeSource TemplatedParent}}" Command="telerik:RadDockingCommands.Pin" InnerCornerRadius="0">
+                            <telerik:RadButton.Style>
+                                <Style TargetType="{x:Type telerik:RadButton}">
+                                    <Setter Property="Width" Value="17"/>
+                                    <Setter Property="Height" Value="17"/>
+                                    <Setter Property="Margin" Value="0,2,2,1"/>
+                                    <Setter Property="IsTabStop" Value="False"/>
+                                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type telerik:RadButton}">
+                                                <Grid>
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Disabled">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ForegroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="#FF8D8D8D"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="White"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Normal"/>
+                                                            <VisualState x:Name="MouseOver">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ForegroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="Black"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="White"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ForegroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="Black"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="White"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <Telerik_Windows_Controls_Chromes:ButtonChrome RenderNormal="False" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}">
+                                                        <telerik:StyleManager.Theme>
+                                                            <telerik:Office_BlackTheme/>
+                                                        </telerik:StyleManager.Theme>
+                                                    </Telerik_Windows_Controls_Chromes:ButtonChrome>
+                                                    <Path x:Name="BackgroundIcon" Data="M0,6.5L7,6.5 M1.5,6.5L1.5,1.5 2.5,0.5 4.5,0.5 5.5,1.5 5.5,6.5 M3.5,6.5L3.5,10 M4.5,6.5L4.5,0.5" Height="10" Margin="0,2,0,0" Stroke="White" StrokeThickness="1" Width="7"/>
+                                                    <Path x:Name="ForegroundIcon" Data="M0,6.5L7,6.5 M1.5,6.5L1.5,1.5 2.5,0.5 4.5,0.5 5.5,1.5 5.5,6.5 M3.5,6.5L3.5,10 M4.5,6.5L4.5,0.5" Height="10" Margin="0,1" Stroke="Black" StrokeThickness="1" Width="7"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </telerik:RadButton.Style>
+                        </telerik:RadButton>
+                        <telerik:RadButton x:Name="HeaderUnPinButton" CommandParameter="{Binding SelectedPane, RelativeSource={RelativeSource TemplatedParent}}" Command="telerik:RadDockingCommands.Pin" InnerCornerRadius="0" Visibility="Collapsed">
+                            <telerik:RadButton.Style>
+                                <Style TargetType="{x:Type telerik:RadButton}">
+                                    <Setter Property="Width" Value="17"/>
+                                    <Setter Property="Height" Value="17"/>
+                                    <Setter Property="Margin" Value="0,2,2,1"/>
+                                    <Setter Property="IsTabStop" Value="False"/>
+                                    <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type telerik:RadButton}">
+                                                <Grid>
+                                                    <VisualStateManager.VisualStateGroups>
+                                                        <VisualStateGroup x:Name="CommonStates">
+                                                            <VisualState x:Name="Disabled">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ForegroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="#FF8D8D8D"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="White"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Normal"/>
+                                                            <VisualState x:Name="MouseOver">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ForegroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="Black"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="White"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                            <VisualState x:Name="Pressed">
+                                                                <Storyboard>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="ForegroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="Black"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="BackgroundIcon">
+                                                                        <DiscreteObjectKeyFrame KeyTime="0">
+                                                                            <DiscreteObjectKeyFrame.Value>
+                                                                                <SolidColorBrush Color="White"/>
+                                                                            </DiscreteObjectKeyFrame.Value>
+                                                                        </DiscreteObjectKeyFrame>
+                                                                    </ObjectAnimationUsingKeyFrames>
+                                                                </Storyboard>
+                                                            </VisualState>
+                                                        </VisualStateGroup>
+                                                    </VisualStateManager.VisualStateGroups>
+                                                    <Telerik_Windows_Controls_Chromes:ButtonChrome RenderNormal="False" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}">
+                                                        <telerik:StyleManager.Theme>
+                                                            <telerik:Office_BlackTheme/>
+                                                        </telerik:StyleManager.Theme>
+                                                    </Telerik_Windows_Controls_Chromes:ButtonChrome>
+                                                    <Path x:Name="BackgroundIcon" Data="M3.5,0L3.5,7 M3.5,1.5L8.5,1.5 9.5,2.5 9.5,4.5 8.5,5.5 3.5,5.5 M3.5,3.5L0,3.5 M3.5,4.5L9.5,4.5" Height="7" Margin="0,2,0,0" Stroke="White" StrokeThickness="1" Width="10"/>
+                                                    <Path x:Name="ForegroundIcon" Data="M3.5,0L3.5,7 M3.5,1.5L8.5,1.5 9.5,2.5 9.5,4.5 8.5,5.5 3.5,5.5 M3.5,3.5L0,3.5 M3.5,4.5L9.5,4.5" Height="7" Margin="0,1" Stroke="Black" StrokeThickness="1" Width="10"/>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </telerik:RadButton.Style>
+                        </telerik:RadButton>
+                    </Grid>
+                    <telerik:RadButton x:Name="HeaderCloseButton" Grid.Column="3" CommandParameter="{Binding SelectedPane, RelativeSource={RelativeSource TemplatedParent}}" Command="telerik:RadDockingCommands.Close" InnerCornerRadius="0">
+                        <telerik:RadButton.Style>
+                            <Style TargetType="{x:Type telerik:RadButton}">
+                                <Setter Property="Width" Value="17"/>
+                                <Setter Property="Height" Value="17"/>
+                                <Setter Property="Margin" Value="0,2,2,1"/>
+                                <Setter Property="IsTabStop" Value="False"/>
+                                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type telerik:RadButton}">
+                                            <Grid x:Name="LayoutRoot">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualState x:Name="Disabled">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ForegroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="#FF8D8D8D"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="White"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Normal"/>
+                                                        <VisualState x:Name="MouseOver">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ForegroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="Black"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="White"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Pressed">
+                                                            <Storyboard>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="ForegroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="Black"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="BackgroundIcon">
+                                                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                                                        <DiscreteObjectKeyFrame.Value>
+                                                                            <SolidColorBrush Color="White"/>
+                                                                        </DiscreteObjectKeyFrame.Value>
+                                                                    </DiscreteObjectKeyFrame>
+                                                                </ObjectAnimationUsingKeyFrames>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Telerik_Windows_Controls_Chromes:ButtonChrome RenderNormal="False" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}">
+                                                    <telerik:StyleManager.Theme>
+                                                        <telerik:Office_BlackTheme/>
+                                                    </telerik:StyleManager.Theme>
+                                                </Telerik_Windows_Controls_Chromes:ButtonChrome>
+                                                <Path x:Name="BackgroundIcon" Data="M0,0L2,0 2,1 3,1 3,2 5,2 5,1 6,1 6,0 8,0 8,1 7,1 7,2 6,2 6,3 5,3 5,4 6,4 6,5 6,5 7,5 7,6 8,6 8,7 6,7 6,6 5,6 5,5 3,5 3,6 2,6 2,7 0,7 0,6 1,6 1,5 2,5 2,4 3,4 3,3 2,3 2,2 1,2 1,1 0,1z" Fill="White" Height="7" Margin="0,2,0,0" Width="8"/>
+                                                <Path x:Name="ForegroundIcon" Data="M0,0L2,0 2,1 3,1 3,2 5,2 5,1 6,1 6,0 8,0 8,1 7,1 7,2 6,2 6,3 5,3 5,4 6,4 6,5 6,5 7,5 7,6 8,6 8,7 6,7 6,6 5,6 5,5 3,5 3,6 2,6 2,7 0,7 0,6 1,6 1,5 2,5 2,4 3,4 3,3 2,3 2,2 1,2 1,1 0,1z" Fill="Black" Height="7" Margin="0,1" Width="8"/>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </telerik:RadButton.Style>
+                    </telerik:RadButton>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+
+        <Style x:Key="RadPaneStyle1" TargetType="{x:Type telerik:RadPane}">
+           
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadPane}">
+                        <Grid x:Name="wrapper">
+                           
+                           
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="LeftTemplate">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadPane}">
+                        <Grid x:Name="wrapper">
+                            
+                            
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="TopTemplate">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadPane}">
+                        <Grid x:Name="wrapper" Margin="0,0,-1,0">
+                            
+                           
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RightTemplate">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadPane}">
+                        <Grid x:Name="wrapper">
+                            
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BottomTemplate">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadPane}">
+                        <Grid x:Name="wrapper" Margin="0,4,-1,0">
+                              
+                                
+                            
+                            <!--<Border x:Name="ContentBorder">
+                                <Telerik_Windows_Controls_Primitives:TabItemContentPresenter x:Name="HeaderElement" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="6,3" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>-->
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="DocumentHostTemplate">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadPane}">
+                        <Grid x:Name="wrapper" Margin="0,0,-1,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                           
+                           
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="#FF848484"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+
+        </Style>
+
+
+        <Style x:Key="CompassStyle" TargetType="{x:Type telerik:Compass}">
+            <Setter Property="Width" Value="1"/>
+            <Setter Property="Height" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:Compass}">
+                        <Border x:Name="VisualRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <telerikDocking:RadDocking CompassStyle="{StaticResource CompassStyle}"  x:Name="dashboardDocking" Visibility="Visible" Grid.Row="0" Margin="0,0,0,0" HasDocumentHost="False" BorderThickness="0" PreviewShowCompass="dashboardDocking_PreviewShowCompass_1" >
+
+            <telerikDocking:RadSplitContainer>
+                <telerikDocking:RadPaneGroup>
+                    <telerikDocking:RadPane Header="one" x:Name="navPane">
+                        
+                    </telerikDocking:RadPane>
+                </telerikDocking:RadPaneGroup>
+
+                <telerikDocking:RadPaneGroup>
+                    <telerikDocking:RadPane Header="two" Style="{StaticResource RadPaneStyle1}" >
+
+                        <telerikDocking:RadDocking  x:Name="dashboardDocking1" Visibility="Visible" Grid.Row="0" Margin="0,0,0,0" HasDocumentHost="False" BorderThickness="0" PreviewShowCompass="dashboardDocking1_PreviewShowCompass_1" >
+
+                            <telerikDocking:RadSplitContainer>
+                                <telerikDocking:RadPaneGroup>
+                                    <telerikDocking:RadPane Header="one"></telerikDocking:RadPane>
+                                </telerikDocking:RadPaneGroup>
+
+                                <telerikDocking:RadPaneGroup>
+                                    <telerikDocking:RadPane Header="two"></telerikDocking:RadPane>
+                                </telerikDocking:RadPaneGroup>
+
+                                <telerikDocking:RadPaneGroup>
+                                    <telerikDocking:RadPane Header="three"></telerikDocking:RadPane>
+                                </telerikDocking:RadPaneGroup>
+                            </telerikDocking:RadSplitContainer>
+
+
+
+
+                        </telerikDocking:RadDocking>
+
+                    </telerikDocking:RadPane>
+                </telerikDocking:RadPaneGroup>
+
+                
+            </telerikDocking:RadSplitContainer>
+
+
+
+
+        </telerikDocking:RadDocking>
+        
+       
+    </Grid>
+</Window>
